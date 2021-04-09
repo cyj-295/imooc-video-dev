@@ -1,0 +1,20 @@
+{
+  "pages":[
+    "pages/videoInfo/videoInfo",
+    "pages/index/index",
+    "pages/userLogin/login",
+    "pages/mine/mine",
+    "pages/userRegist/regist",
+    "pages/chooseBgm/chooseBgm"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "抖抖短视频",
+    "navigationBarTextStyle": "black"
+  },
+  "debug": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
