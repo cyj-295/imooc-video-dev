@@ -1,4 +1,5 @@
-
+const { uploadVideo } = require("../../util/videoUtil.js");
+var videoUtil = require("../../util/videoUtil.js")
 const app = getApp()
 
 Page({
@@ -61,7 +62,9 @@ Page({
             icon:'success',
             duration: 2000
           });
-          app.userInfo=null;
+          // app.userInfo=null;
+          //註銷，清空緩存
+          wx.removeStorageSync("userInfo")
           //页面跳转
           wx.navigateTo({
             url: '../userLogin/login',
@@ -121,44 +124,45 @@ Page({
   },
 
   uploadVideo:function(){
-    var me = this;
-    wx.chooseVideo({
-      camera: 'back',
-      sourceType: ['album'],
-      maxDuration: 60,
-      success(res){
-        console.log(res);
-        var duration = res.duration;
-        var tmpHeight = res.height;
-        var tmpWidth = res.width;
-        var tmpVideoUrl = res.tempFilePath;
-        var tmpCoverUrl = res.thumbTempFilePath;
+    videoUtil : uploadVideo();
+    // var me = this;
+    // wx.chooseVideo({
+    //   camera: 'back',
+    //   sourceType: ['album'],
+    //   maxDuration: 60,
+    //   success(res){
+    //     console.log(res);
+    //     var duration = res.duration;
+    //     var tmpHeight = res.height;
+    //     var tmpWidth = res.width;
+    //     var tmpVideoUrl = res.tempFilePath;
+    //     var tmpCoverUrl = res.thumbTempFilePath;
 
-        if(duration > 15){
-          wx.showToast({
-            title: '视频长度不能超过15秒...',
-            icon: 'none',
-            duration: 2500
-          })
-        }else if (duration < 1){
-          wx.showToast({
-            title: '视频长度太短，请上传超过1秒的视频...',
-            icon: 'none',
-            duration: 2500
-          })
-        }else{
-          //打开选择bgm的页面
-          wx.navigateTo({
-            url: '../chooseBgm/chooseBgm?duration=' + duration
-            + "&tmpHeight=" + tmpHeight
-            + "&tmpWidth=" + tmpWidth
-            + "&tmpVideoUrl=" + tmpVideoUrl
-            + "&tmpCoverUrl=" + tmpCoverUrl
-          })
-        }
+    //     if(duration > 15){
+    //       wx.showToast({
+    //         title: '视频长度不能超过15秒...',
+    //         icon: 'none',
+    //         duration: 2500
+    //       })
+    //     }else if (duration < 1){
+    //       wx.showToast({
+    //         title: '视频长度太短，请上传超过1秒的视频...',
+    //         icon: 'none',
+    //         duration: 2500
+    //       })
+    //     }else{
+    //       //打开选择bgm的页面
+    //       wx.navigateTo({
+    //         url: '../chooseBgm/chooseBgm?duration=' + duration
+    //         + "&tmpHeight=" + tmpHeight
+    //         + "&tmpWidth=" + tmpWidth
+    //         + "&tmpVideoUrl=" + tmpVideoUrl
+    //         + "&tmpCoverUrl=" + tmpCoverUrl
+    //       })
+    //     }
 
-      }
-    })
+    //   }
+    // })
   }
 
 

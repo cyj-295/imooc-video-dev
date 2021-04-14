@@ -1,11 +1,13 @@
 {
   "pages":[
-    "pages/videoInfo/videoInfo",
     "pages/index/index",
+    "pages/videoInfo/videoInfo",
+    
     "pages/userLogin/login",
     "pages/mine/mine",
     "pages/userRegist/regist",
-    "pages/chooseBgm/chooseBgm"
+    "pages/chooseBgm/chooseBgm",
+    "pages/videoSearch/videoSearch"
     
   ],
   "window": {
